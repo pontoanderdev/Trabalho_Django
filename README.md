@@ -29,5 +29,8 @@ http://127.0.0.1:8000/sale/1/excluir/
 Admin:
 http://127.0.0.1:8000/admin/
 
-{user: anderson
-senha: 456456}
+{
+user: anderson
+
+senha: 456456
+}
