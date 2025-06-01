@@ -1,0 +1,9 @@
+{% load static %}
+<h1>Excluir Venda</h1>
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<p>Tem certeza que deseja excluir esta venda?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmar</button>
+</form>
+<a href="{% url 'venda_list' %}">Cancelar</a>

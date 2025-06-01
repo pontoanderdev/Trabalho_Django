@@ -1,0 +1,27 @@
+{% load static %}
+<h1>Vendas</h1>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<a href="{% url 'venda_create' %}">Nova Venda</a>
+<form method="get">
+    <label for="cliente">Cliente:</label>
+    <select name="cliente" id="cliente">
+        <option value="">Todos</option>
+        {% for c in clientes %}
+            <option value="{{ c.id }}" {% if c.id|stringformat:"s" == filtro_cliente %}selected{% endif %}>{{ c.nome }}</option>
+        {% endfor %}
+    </select>
+    <label for="data_inicio">De:</label>
+    <input type="date" name="data_inicio" value="{{ data_inicio }}">
+    <label for="data_fim">Até:</label>
+    <input type="date" name="data_fim" value="{{ data_fim }}">
+    <button type="submit">Filtrar</button>
+</form>
+<ul>
+    {% for venda in vendas %}
+    <li>
+        {{ venda.cliente.nome }} comprou {{ venda.quantidade }}x {{ venda.produto.nome }} em {{ venda.data_venda }} — Total: R$ {{ venda.valor_total }}
+        <a href="{% url 'venda_update' venda.pk %}">Editar</a>
+        <a href="{% url 'venda_delete' venda.pk %}">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>

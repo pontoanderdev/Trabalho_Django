@@ -1,0 +1,10 @@
+{% load static %} {% extends 'produtos/base.html' %} {% block content %}
+<h1>Remover Produto</h1>
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<p>Tem certeza que deseja remover "{{ produto.nome }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmar</button>
+  <a href="{% url 'lista_produtos' %}">Cancelar</a>
+</form>
+{% endblock %}

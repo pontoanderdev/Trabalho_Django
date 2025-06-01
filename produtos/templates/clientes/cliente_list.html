@@ -1,0 +1,13 @@
+{% load static %}
+<h1>Clientes</h1>
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<a href="{% url 'cliente_create' %}">Novo Cliente</a>
+<ul>
+  {% for cliente in clientes %}
+  <li>
+    {{ cliente.nome }} - {{ cliente.email }} - {{ cliente.data_nascimento }}
+    <a href="{% url 'cliente_update' cliente.pk %}">Editar</a>
+    <a href="{% url 'cliente_delete' cliente.pk %}">Excluir</a>
+  </li>
+  {% endfor %}
+</ul>
